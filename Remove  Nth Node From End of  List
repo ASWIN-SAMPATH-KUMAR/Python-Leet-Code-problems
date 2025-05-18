@@ -1,0 +1,17 @@
+class Solution(object):
+    def removeNthFromEnd(self, head, n):
+        """
+        :type head: Optional[ListNode]
+        :type n: int
+        :rtype: Optional[ListNode]
+        """
+        
+        d=ListNode(0, head)
+        slow=fast=d
+        for i in range(n + 1):
+            fast=fast.next
+        while fast:
+            slow=slow.next
+            fast=fast.next
+        slow.next=slow.next.next
+        return d.next
