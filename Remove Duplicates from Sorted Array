@@ -1,0 +1,8 @@
+class Solution(object):
+    def removeDuplicates(self, nums):
+        arr = []
+        for i in nums:
+            if i not in arr:
+                arr.append(i)
+
+        nums[:] = arr
