@@ -1,0 +1,31 @@
+class Solution(object):
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+        l = len(s)
+        if numRows <= 1 or l<=1:
+            return s
+        result_str = ''
+        for row in range(numRows):
+            if row > l - 1:
+                break
+            go_down = False
+            temp_idx = row
+            result_str += s[row]
+            while temp_idx < l:
+                if row == 0:
+                    go_down = True
+                elif row == numRows - 1:
+                    go_down = False
+                else:
+                    go_down = not go_down
+                if go_down:
+                    temp_idx += ((numRows - row) * 2) - 2
+                else:
+                    temp_idx += ((row + 1) * 2) - 2
+                if temp_idx < l:
+                    result_str += s[temp_idx]
+        return result_str
